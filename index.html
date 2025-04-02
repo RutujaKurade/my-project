@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voter Registration Form</title>
+<style>
+  body {
+    background-color: #e9e9e9; /* Background color for the entire page */
+    font-family: Arial, sans-serif; /* Optional: Setting a font family */
+  }
+
+  .container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f4f4f4; /* Background color for the container */
+  }
+
+  .form-box {
+    background-color: #ffffff; /* Background color for the form box */
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  .form-box label, .form-box input {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .form-box input[type="submit"] {
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+  }
+
+  .form-box input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+</style>
+<script>
+  function validateForm() {
+    var name = document.getElementById('name').value.trim();
+    var age = document.getElementById('age').value;
+    var nationality = document.getElementById('nationality').value.trim();
+
+    // Check if name is empty
+    if (name === '') {
+      alert('Please enter your name.');
+      return false;
+    }
+
+    // Check if age is empty or not a number
+    if (age === '' || isNaN(age)) {
+      alert('Please enter a valid age.');
+      return false;
+    }
+
+    // Check if age is less than 18
+    if (parseInt(age) < 18) {
+      alert('You must be at least 18 years old to register as a voter.');
+      return false;
+    }
+
+    // Check if nationality is empty
+    if (nationality === '') {
+      alert('Please enter your nationality.');
+      return false;
+    }
+
+    // All validations passed
+    alert('Form submitted successfully!');
+    return true;
+  }
+</script>
+</head>
+<body>
+<div class="container">
+  <h2>Voter Registration Form</h2>
+  <form onsubmit="return validateForm()" class="form-box">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="age">Age:</label>
+    <input type="text" id="age" name="age" required>
+
+    <label for="nationality">Nationality:</label>
+    <input type="text" id="nationality" name="nationality" required>
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+</body>
+</html>
